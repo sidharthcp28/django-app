@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-TEC</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <style>
+        body {
+            background-image: url('{% static 'img/bg2.jpg' %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark m-0 d-lg-block" style="background: transparent; padding: 0.25rem 0.5rem;">
+            <div class="container-fluid">
+                <a class="navbar-brand text-danger font-weight-bold" href="{% url 'home' %}">
+                    <img src="{% static 'img/logo_2.jpg' %}" alt="Logo" width="40" height="auto">
+                </a>
+                <button class="navbar-toggler p-2 rounded-1 border-0 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-toggles" style="color:rgb(46, 182, 255); font-size: 2rem;"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto text-uppercase">
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-link text-primary font-bold" href="{% url 'home' %}">
+                                <i class="bi bi-house-fill" style="color:rgb(0, 123, 255); font-size: 1.5rem;"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-link text-primary font-bold" href="{% url 'courses' %}">
+                                <i class="bi bi-book-half" style="color:rgb(0, 123, 255); font-size: 1.5rem;"></i> Courses
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-nav-link text-primary font-bold" href="{% url 'student_create' %}">
+                                <i class="bi bi-pencil-square" style="color:rgb(0, 123, 255); font-size: 1.5rem;"></i> Apply Now
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid p-0">
+        {% block content %}
+        <section>
+            <div id="intro" class="bg-image" style="background-image: url('{% static 'img/img4-1.jpg' %}'); min-height: 100vh;">
+                <div class="mask" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{% static 'img/img4-1.jpg' %}'); min-height: 100vh;"></div>
+                <div class="carousel-caption d-flex flex-column align-items-start">
+                    <h5 class="text-warning">Get Certified</h5>
+                    <h1 class="text-white">Boost Your Career</h1>
+                    <p class="text-white">Get certified in your field of interest.</p>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-warning animate-on-hover">Read More</a>
+                        <a href="{% url 'student_create' %}" class="btn btn-light animate-on-hover ml-2">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <div class="container-fluid p-0 mb-5 animate-on-hover">
+            <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#heroCarousel" data-slide-to="1"></li>
+                    <li data-target="#heroCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <!-- Slides -->
+                    {% for slide in slides %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img class="d-block w-100" src="{{ slide.image.url }}" alt="{{ slide.title }}">
+                        <div class="carousel-caption d-flex flex-column align-items-start">
+                            <h5 class="text-warning">{{ slide.title }}</h5>
+                            <h1 class="text-white">{{ slide.heading }}</h1>
+                            <p class="text-white">{{ slide.description }}</p>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-warning animate-on-hover">Read More</a>
+                                <a href="{% url 'student_create' %}" class="btn btn-light animate-on-hover ml-2">Join Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+<!-- Footer Section Start -->
+<footer class="text-light py-5" style="background-color: #343a40;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="fw-bold">G-TEC</h5>
+                <p><i class="bi bi-geo-alt me-2"></i>Thovarai complex, Logans Rd, Pilakool, Thalassery, Kerala 670103</p>
+                <p><i class="bi bi-telephone me-2"></i>+91 8304889228</p>
+                <p><i class="bi bi-envelope me-2"></i>thalassery.knr@gteceducation.com</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-bold">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}" class="text-decoration-none text-light">About Us</a></li>
+                    <li><a href="#" class="text-decoration-none text-light">Contact Us</a></li>
+                    <li><a href="#" class="text-decoration-none text-light">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-bold">Our Location</h5>
+                <a href="https://maps.google.com/" target="_blank">
+                    <img src="{% static 'img/map_1.jpeg' %}" alt="Our Location" class="img-fluid rounded shadow-sm">
+                </a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <p class="text-muted mb-0">&copy; 2025 G-TEC. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<style>
+    footer {
+        background-color: #343a40;
+    }
+
+    footer h5 {
+        font-size: 1.25rem;
+        color: #f8f9fa;
+    }
+
+    footer p, footer ul li a {
+        font-size: 0.875rem;
+        color: #adb5bd;
+    }
+
+    footer ul li a:hover {
+        color: #f8f9fa;
+        text-decoration: underline;
+    }
+
+    footer img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    footer img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .fw-bold {
+        font-weight: 700;
+    }
+
+    .text-decoration-none {
+        text-decoration: none;
+    }
+
+    .text-light {
+        color: #f8f9fa !important;
+    }
+
+    .me-2 {
+        margin-right: 0.5rem;
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+    }
+</style>
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
