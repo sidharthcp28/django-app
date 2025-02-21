@@ -18,8 +18,8 @@ A brief description of your Django app. For example:
 ---
 
 ## **Technologies Used**
-- **Django**: Version X.X.X
-- **Python**: Version X.X
+- **Django**: Version 5 or higher 
+- **Python**: Version 3 or higher 
 - **Database**: SQLite / PostgreSQL / MySQL
 - **Frontend**: (e.g., HTML, CSS, JavaScript)
 - **Other Tools/Libraries**: (e.g., Bootstrap, Django Rest Framework)
@@ -28,6 +28,8 @@ A brief description of your Django app. For example:
 
 ## **Setup and Installation**
 
+## ** notices  following  are  just  examples' comments'  so change it acode to your way**
+ 
 ### Prerequisites:
 - Python installed (version >= X.X)
 - `pip` package manager
